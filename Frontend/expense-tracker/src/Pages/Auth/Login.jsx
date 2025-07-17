@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 
 const Login = () => {
-    const { email, setEmail } = useState("");
-    const { password, setpassword } = useState("");
-    const { error, setError } = useState(null);
+    const [ email, setEmail ] = useState("");
+    const [ password, setpassword ] = useState("");
+    const [ error, setError ] = useState(null);
 
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                     <Input
                         value={email}
-                        onChange={(target) => setEmail(target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         label="Email Address"
                         placeholder="john@example.com"
                         type="text"
@@ -51,7 +51,7 @@ const Login = () => {
 
                     <Input
                         value={password}
-                        onChange={(target) => setpassword(target.value)}
+                        onChange={(e) => setpassword(e.target.value)}
                         label="Password "
                         placeholder="Min 8 Characters"
                         type="password"

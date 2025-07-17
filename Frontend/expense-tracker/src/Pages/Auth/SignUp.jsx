@@ -18,7 +18,29 @@ const SignUp = () => {
     const naviagte = useNavigate();
 
     //handle Sign Up Form Submit
-    const handleSignUp = async (e) => {};
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+
+        let profileImageUrl = ""
+        if (!fullname) {
+            setError("Please enter your name.");
+            return;
+        }
+ 
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address.")
+            return;
+        }
+
+        if (!password) {
+            setError("Please enter the password.")
+            return;
+        }
+
+        setError("");
+
+        //SignUp API Call
+    };
     return (
         <AuthLayout>
             <div className="lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center">
@@ -36,7 +58,7 @@ const SignUp = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Input
                             value={fullname}
-                            onChange={(target) => setFullName(target.value)}
+                            onChange={(e) => setFullName(e.target.value)}
                             label="Full Name"
                             placeholder="John"
                             type="text"
@@ -44,7 +66,7 @@ const SignUp = () => {
 
                         <Input
                             value={email}
-                            onChange={(target) => setEmail(target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             label="Email Address"
                             placeholder="john@example.com"
                             type="text"
@@ -52,7 +74,7 @@ const SignUp = () => {
                         <div className="col-span-2">
                             <Input
                                 value={password}
-                                onChange={(target) => setPassword(target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                                 label="Password "
                                 placeholder="Min 8 Characters"
                                 type="password"
