@@ -1,16 +1,21 @@
-import React, { useState } from "react";
-import AuthLayout from "../../Components/layouts'/AuthLayout";
+import React, { useState, useContext } from "react";
+import AuthLayout from "../../Components/Components/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";
-import Input from "../../Components/layouts'/Inputs/Input";
+import Input from "../../Components/Components/Inputs/Input";
 
 import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
+import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHs } from "../../utils/apiPaths";
+import { UserContext } from "../../Context/userContext";
 
 const Login = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setpassword ] = useState("");
     const [ error, setError ] = useState(null);
 
+    const { updateUser } = useContext(UserContext);
     const navigate = useNavigate();
 
     //handle login  form Submit
@@ -28,6 +33,25 @@ const Login = () => {
 
         setError("");
         //Login Api call
+        try {
+            const response = await axiosInstance.post(API_PATHs.AUTH.LOGIN, {
+                email,
+                password,
+            });
+            const { token, user } = response.data;
+
+            if (token) {
+                localStorage.setItem("token", token);
+                updateUser(user);
+                navigate("/dashboard");
+            }
+        } catch(error) {
+            if (error.response && error.response.data.message) {
+                setError(error.response.data.message);
+            } else {
+                setError("Something went wrong.Please try again.");
+            }
+        }
     };
     return (
         <AuthLayout>
