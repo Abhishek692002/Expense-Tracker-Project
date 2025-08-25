@@ -12,6 +12,7 @@ import {
 const CustomLineChart = ({ data }) => {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
+            // console.log("Full tooltip data:", JSON.stringify(payload, null, 2));
             return (
                 <div className="bg-white shadow-md rounded-lg p-2 border border-gray-300">
                     <p className="text-xs font-semibold text-purple-800 mb-1">
@@ -29,7 +30,6 @@ const CustomLineChart = ({ data }) => {
         return null;
     };
 
-   
     return (
         <div className="bg-white">
             <ResponsiveContainer width="100%" height={300}>
@@ -44,12 +44,12 @@ const CustomLineChart = ({ data }) => {
                         >
                             <stop
                                 offset="5%"
-                                stopColor="#0875c75"
+                                stopColor="#875c75"
                                 stopOpacity={0.4}
                             />
                             <stop
                                 offset="95%"
-                                stopColor="#0875c75"
+                                stopColor="#875c75"
                                 stopOpacity={0}
                             />
                         </linearGradient>

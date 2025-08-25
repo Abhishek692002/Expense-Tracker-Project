@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post("/add",protect, addIncome);
 router.get("/get",protect, getAllIncome);
-router.get("/downloadexel",protect, downloadedIncomeExcel);
+router.get("/downloadexcel",protect, downloadedIncomeExcel);
 router.delete("/:id", protect, deleteIncome);
 
 module.exports = router;

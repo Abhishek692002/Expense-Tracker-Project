@@ -14,7 +14,7 @@ const ExpenseTransections = ({transections,onSeeMore}) => {
             </div>
 
             <div>
-                {transections?.slice(0, 5)?.map((expense) =>(
+                {transections?.slice(0, 4)?.map((expense) =>(
                     <TransectionInfoCard
                         key={expense._id}
                         title={expense.category}

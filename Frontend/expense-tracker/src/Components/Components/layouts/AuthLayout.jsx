@@ -6,7 +6,7 @@ const AuthLayout = ({children}) => {
       <div className="flex">
           <div className="w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12">
               <h2 className="text-lg font-medium text-shadow-black">
-                  Expense Tracker
+                  Expen$Sync
               </h2>
               {children}
           </div>

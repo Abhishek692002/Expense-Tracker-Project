@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post("/add", protect, addExpense);
 router.get("/get", protect, getAllExpense);
-router.get("/downloadexel", protect, downloadedExpenseExcel);
+router.get("/downloadexcel", protect, downloadedExpenseExcel);
 router.delete("/:id", protect, deleteExpense);
 
 module.exports = router;
