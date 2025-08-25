@@ -60,6 +60,7 @@ const CustomLineChart = ({ data }) => {
                         dataKey="month"
                         tick={{ fontSize: 12, fill: "#555" }}
                         stroke="none"
+                        tickFormatter={(value) => value.split("-")[0]}
                     />
                     <YAxis
                         tick={{ fontSize: 12, fill: "#555" }}
@@ -68,7 +69,14 @@ const CustomLineChart = ({ data }) => {
 
                     <Tooltip content={CustomTooltip} />
 
-                    <Area type="monotone" dataKey="amount" stroke="#875cf5" fill="url(#incomeGradient)" strokeWidth={3} dot={{r:3, fill:"#ab8df8"}} />
+                    <Area
+                        type="monotone"
+                        dataKey="amount"
+                        stroke="#875cf5"
+                        fill="url(#incomeGradient)"
+                        strokeWidth={3}
+                        dot={{ r: 3, fill: "#ab8df8" }}
+                    />
                 </AreaChart>
             </ResponsiveContainer>
         </div>

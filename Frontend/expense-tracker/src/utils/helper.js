@@ -29,8 +29,8 @@ export const addThousandsSeparator = (num) => {
 };
 
 export const prepareExpenseBarChatData = (data = []) => {
-    const chartData = data.map((item) => ({
-        month: moment(item?.date).format("Do MMM"),
+    const chartData = data.map((item,index) => ({
+        month: moment(item?.date).format("Do MMM") + `-${index}`,
         category: item?.category,
         amount: item?.amount,
     }));
@@ -42,7 +42,7 @@ export const prepareIncomeBarChartData = (data = []) => {
         (a, b) => new Date(a.date) - new Date(b.date)
     );
     const chartData = sortedData.map((item,index) => ({
-        month: moment(item?.date).format("Do MMM"),
+        month: moment(item?.date).format("Do MMM") + `-${index}`,
         amount: item?.amount,
         source: item?.source,
     }));
@@ -53,8 +53,8 @@ export const prepareExpenseLineChartData = (data = []) => {
      const sortedData = [...data].sort(
          (a, b) => new Date(a.date) - new Date(b.date)
     );
-    const chartData = sortedData.map((item) => ({
-        month: moment(item?.date).format("Do MMM"),
+    const chartData = sortedData.map((item,index) => ({
+        month: moment(item?.date).format("Do MMM") + `-${index}`,
         amount: item?.amount,
         category: item?.category,
     }));

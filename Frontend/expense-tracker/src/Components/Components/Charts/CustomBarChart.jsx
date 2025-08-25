@@ -67,6 +67,7 @@ const CustomBarChart = ({ data }) => {
                         dataKey="month"
                         tick={{ fontSize: 12, fill: "#555" }}
                         stroke="none"
+                        tickFormatter={(value) => value.split("-")[0]}
                     />
                     <YAxis
                         tick={{ fontSize: 12, fill: "#555" }}
